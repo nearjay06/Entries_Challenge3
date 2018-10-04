@@ -6,6 +6,7 @@ entries =[ ]
 
 @app.route("/api/v1/entries/", methods=['GET'])
 def get_all_entries():
+ 
  return jsonify({'entries': entries})
 
 @app.route("/api/v1/entries/", methods=['POST'])
@@ -40,6 +41,28 @@ def modify_entry(id):
      
       return jsonify ({'entries':'success'}), 200
     return jsonify({'message':'entry not found'})
+
+@app.route("/api/v1/auth/signup", methods=['POST'])
+def register_user():
+    request_data = request.get_json()
+    for entry in entries:
+         entry['username'] == request_data['username']
+         entry ['email'] == request_data['email']
+         entry ['password'] == request_data['password']
+         
+    return jsonify ({'entries': request_data}), 201
+   # return jsonify({'message':'entry not found'})     
+
+
+@app.route("/api/v1/auth/login", methods=['POST'])
+def login_user():
+    request_data = request.get_json()
+    for entry in entries:
+        entry['username'] == request_data['username']
+        entry ['password'] == request_data['password']
+         
+    return jsonify ({'entries': request_data}), 201
+    #return jsonify({'message':'entry not found'})
 
 
  
